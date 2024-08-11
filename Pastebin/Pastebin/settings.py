@@ -25,9 +25,9 @@ SECRET_KEY = "django-insecure-#3%wvr+%sey$t*el(2tcxi32m8(e-jbx7mbx#gvncp=#%_m-*7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.github.dev']
 CSRF_TRUSTED_ORIGINS = ['https://*.github.dev', 'https://localhost:8000']
-
+USE_X_FORWARDED_HOST = True
 
 # Application definition
 
@@ -83,7 +83,10 @@ DATABASES = {
     }
 }
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
